@@ -1,58 +1,112 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# PanRuta Libre — Grupo 15
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Proyecto final de Desarrollo de Proyectos con Software Libre (ISW-304).
 
-## About Laravel
+Universidad Abierta para Adultos (UAPA), 2026.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Descripción
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+PanRuta Libre es una aplicación web para apoyar la gestión
+y distribución de productos de panadería.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Permite administrar productos y clientes mediante operaciones
+de registro, consulta, actualización y desactivación.
 
-## Learning Laravel
+## Tecnologías utilizadas
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Ubuntu Server
+- Apache
+- PHP
+- Laravel
+- MariaDB
+- Git y GitHub
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Funcionalidades implementadas
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+### Productos
+- Registrar productos.
+- Consultar el catálogo.
+- Editar información.
+- Desactivar productos.
 
-## Agentic Development
+### Clientes
+- Registrar clientes.
+- Consultar clientes activos.
+- Actualizar información.
+- Desactivar clientes.
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## Base de datos
 
-```bash
-composer require laravel/boost --dev
+Nombre: panruta_libre
 
-php artisan boost:install
-```
+El archivo de estructura se encuentra en:
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+database/sql/panruta_libre_estructura.sql
 
-## Contributing
+Contiene las definiciones de 15 tablas, sin registros de usuarios
+ni datos comerciales.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Para importar la estructura en MariaDB:
 
-## Code of Conduct
+    mariadb -u root -p -e "CREATE DATABASE panruta_libre CHARACTER SET utf8mb4;"
+    mariadb -u root -p panruta_libre < database/sql/panruta_libre_estructura.sql
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Instalación
 
-## Security Vulnerabilities
+Requisitos:
+- PHP compatible con la versión de Laravel utilizada.
+- Composer.
+- MariaDB.
+- Apache.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Clonar el proyecto:
 
-## License
+    git clone https://github.com/noelfrias/PanRuta-Libre-Grupo-15.git
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Entrar al proyecto:
+
+    cd PanRuta-Libre-Grupo-15
+
+Instalar dependencias:
+
+    composer install
+
+Configurar el entorno:
+
+    cp .env.example .env
+    php artisan key:generate
+
+Editar el archivo .env con las credenciales de MariaDB:
+
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=panruta_libre
+    DB_USERNAME=USUARIO_MARIADB
+    DB_PASSWORD=CONTRASENA_MARIADB
+
+Importar la estructura SQL antes de utilizar la aplicación.
+
+El servidor Apache debe apuntar al directorio public
+del proyecto Laravel.
+
+## Acceso a la aplicación
+
+Página principal: /
+
+Productos: /productos
+
+Clientes: /clientes
+
+## Repositorio oficial
+
+https://github.com/noelfrias/PanRuta-Libre-Grupo-15
+
+## Nota
+
+La aplicación se desarrolló y probó en un servidor Ubuntu
+con Apache y MariaDB, accesible desde un equipo Mac
+dentro de una red local.
+
+El repositorio contiene código fuente y estructura SQL.
+No contiene los datos reales de la instalación local.
